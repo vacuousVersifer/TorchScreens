@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Thing {
     private final List<Component> components;
-    private final Transform transform;
+    private Transform transform;
     private final int zIndex;
 
     public Thing() {
@@ -65,6 +65,10 @@ public class Thing {
         }
     }
 
+    public void setTransform(Transform newTransform) {
+        this.transform = newTransform;
+    }
+
     public Transform getTransform() {
         return transform;
     }
@@ -72,4 +76,6 @@ public class Thing {
     public int getzIndex() {
         return zIndex;
     }
+
+
 }

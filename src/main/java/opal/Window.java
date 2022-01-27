@@ -116,10 +116,6 @@ public class Window {
             glfwSetWindowSize(glfwWindow, newWidth, newHeight);
         });
 
-        glfwSetCursorPosCallback(glfwWindow, (w, xPos, yPos) -> {
-           System.out.println(xPos + " " + yPos);
-        });
-
         // Make the OpenGL context current
         glfwMakeContextCurrent(glfwWindow);
         // Enable v-sync

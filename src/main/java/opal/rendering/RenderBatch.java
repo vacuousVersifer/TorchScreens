@@ -175,7 +175,6 @@ public class RenderBatch implements Comparable<RenderBatch> {
             Vector2f scale = sprite.getGameObject().getTransform().getScale();
 
             float x, y;
-            System.out.println(Arrays.toString(texCoords));
 
             if(i == 2) {
                 x = position.x;
@@ -192,7 +191,6 @@ public class RenderBatch implements Comparable<RenderBatch> {
             }
 
 //            System.out.println("(" + x + " " + scale.x + ", " + y + " " + scale.y + ")");
-            System.out.println();
 
             // Load position
             vertices[offset] = x;

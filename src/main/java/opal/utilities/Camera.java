@@ -1,5 +1,6 @@
 package opal.utilities;
 
+import opal.Window;
 import org.joml.Matrix4f;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
@@ -17,16 +18,32 @@ public class Camera {
 
     public void adjustProjection() {
         projectionMatrix.identity();
-        projectionMatrix.ortho(0.0f, 32.0f * 40.0f, 0.0f, 32.0f * 21.0f, 0.0f, 100.0f);
+        float left = 0f;
+        float right = Window.getWidth();
+        float bottom = 0f;
+        float top = Window.getHeight();
+        float near = 0f;
+        float far = 100f;
+        projectionMatrix.ortho(left, right, top, bottom, near, far);
+//        System.out.println("Adjusting - " + right + " " + top);
     }
 
     public Matrix4f getViewMatrix() {
+        adjustProjection();
         Vector3f cameraFront = new Vector3f(0.0f, 0.0f, -1.0f);
-        Vector3f cameraUp = new Vector3f(0.0f, 1.0f, 0.0f);
+        Vector3f cameraUp = new Vector3f(0f, 1f, 0f);
+
+        /*
+                   Red
+            Blue        Green
+                 Purple
+         */
         this.viewMatrix.identity();
-        this.viewMatrix = viewMatrix.lookAt(new Vector3f(position.x, position.y, 20.0f),
-                                         cameraFront.add(position.x, position.y, 0.0f),
-                                         cameraUp);
+
+        Vector3f eye = new Vector3f(position.x, position.y, 20.0f);
+        Vector3f center = cameraFront.add(position.x, position.y, 0.0f);
+
+        this.viewMatrix = viewMatrix.lookAt(eye, center, cameraUp);
 
         return this.viewMatrix;
     }

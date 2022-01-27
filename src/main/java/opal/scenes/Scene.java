@@ -38,6 +38,16 @@ public abstract class Scene {
         }
     }
 
+    public void removeGameObjectFromScene(Thing go) {
+        System.out.println(go.toString());
+        System.out.println(things.toString());
+        if(things.remove(go)) {
+            System.out.println("Removed");
+        } else {
+            System.out.println("Not removed");
+        }
+    }
+
     public abstract void update(float dt);
 
     public Camera camera() {
