@@ -28,7 +28,7 @@ public class StoryScene extends Scene {
 
         Vector2f size = new Vector2f(width, height);
 
-        Thing w1 = new Thing(new Transform(new Vector2f(0, 0), size), 1);
+        Thing w1 = new Thing(new Transform(new Vector2f(0, 0), new Vector2f(Window.getWidth(), 100)), 1);
         w1.addComponent(new PictureRenderer(new Picture(AssetPool.getTexture(story.getImageLocation()))));
         this.addGameObjectToScene(w1);
 

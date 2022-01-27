@@ -122,6 +122,7 @@ public class RenderBatch implements Comparable<RenderBatch> {
 
         if(rebufferData) {
             glBindBuffer(GL_ARRAY_BUFFER, vboID);
+//            flip(vertices);
             glBufferSubData(GL_ARRAY_BUFFER, 0, vertices);
         }
 
@@ -190,7 +191,7 @@ public class RenderBatch implements Comparable<RenderBatch> {
                 y = position.y + scale.y;
             }
 
-            System.out.println("(" + x + " " + scale.x + ", " + y + " " + scale.y + ")");
+//            System.out.println("(" + x + " " + scale.x + ", " + y + " " + scale.y + ")");
             System.out.println();
 
             // Load position
@@ -259,6 +260,14 @@ public class RenderBatch implements Comparable<RenderBatch> {
     @Override
     public int compareTo(RenderBatch o) {
         return Integer.compare(this.getzIndex(), o.getzIndex());
+    }
+
+    private void flip(float[] array) {
+        for(int i=0; i<array.length/2; i++){
+            float temp = array[i];
+            array[i] = array[array.length -i -1];
+            array[array.length -i -1] = temp;
+        }
     }
 }
 
